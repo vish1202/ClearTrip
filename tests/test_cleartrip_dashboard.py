@@ -1,3 +1,5 @@
+import pytest
+
 from TestData.ClearTripDashboardPageData import DashboardPageData
 from pageObjects.SearchResultsPage import SearchResultsPage
 from utilities.BaseClass import BaseClass
@@ -21,6 +23,7 @@ class TestClearTrip(BaseClass):
         actual_msg = ClearTripDashboardPage.get_validation_msg(self)
         assert actual_msg == "Enter departure and arrival airports / cities"
 
+    @pytest.mark.e2e
     def test_search_flights(self):
         self.go_to_cleartrip()
         self.waitforpageload()
