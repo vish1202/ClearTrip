@@ -87,3 +87,5 @@ interaction.flushEventLoop@chrome://remote/content/marionette/interaction.js:431
 webdriverClickElement@chrome://remote/content/marionette/interaction.js:179:31
 console.warn: LoginRecipes: "Falling back to a synchronous message for: https://rahulshettyacademy.com."
 1663446286287	Marionette	INFO	Stopped listening on port 53850
+1665947121511	geckodriver	INFO	Listening on 127.0.0.1:51913
+1665947184097	geckodriver	INFO	Listening on 127.0.0.1:51925

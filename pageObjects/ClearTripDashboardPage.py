@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
@@ -50,4 +52,6 @@ class ClearTripDashboardPage:
         temp_date = todays_date.split("\n")
         current_date = int(temp_date[0])
         print(current_date)
+        self.driver.execute_script("window.scrollTo(0, 300)")
+        time.sleep(2)
         self.driver.find_element(*ClearTripDashboardPage.future_date).click()

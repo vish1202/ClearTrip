@@ -1,3 +1,5 @@
+from TestData.ClearTripDashboardPageData import DashboardPageData
+from pageObjects.SearchResultsPage import SearchResultsPage
 from utilities.BaseClass import BaseClass
 from pageObjects.ClearTripDashboardPage import ClearTripDashboardPage
 from selenium.webdriver.common.by import By
@@ -22,15 +24,17 @@ class TestClearTrip(BaseClass):
     def test_search_flights(self):
         self.go_to_cleartrip()
         self.waitforpageload()
-        ClearTripDashboardPage.dest_where_from(self).send_keys("Banga")
+        ClearTripDashboardPage.dest_where_from(self).send_keys(DashboardPageData.flights[0])
         ClearTripDashboardPage.wait_for_resultset(self)
         from_results = self.driver.find_elements(*ClearTripDashboardPage.dest_from_results)
         from_results[0].click()
-        ClearTripDashboardPage.dest_where_to(self).send_keys("Delhi")
+        ClearTripDashboardPage.dest_where_to(self).send_keys(DashboardPageData.flights[1])
         ClearTripDashboardPage.wait_for_resultset(self)
-        to_results = self.driver.find_elements(*ClearTripDashboardPage.dest_from_results)
-        to_results[0].click()
+        from_results = self.driver.find_elements(*ClearTripDashboardPage.dest_from_results)
+        from_results[0].click()
         ClearTripDashboardPage.click_return(self).click()
         ClearTripDashboardPage.wait_for_datepicker(self)
         ClearTripDashboardPage.click_future_date(self)
         ClearTripDashboardPage.srchflight(self).click()
+        SearchResultsPage.wait_for_search_results(self)
+        SearchResultsPage.click_book_btn(self)
